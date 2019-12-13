@@ -6,9 +6,8 @@
  * Time: 4:15 PM
  */
 
-namespace TestCache;
+namespace Tests\Cache;
 
-use Ali\InstanceTrait;
 use All\Cache\Cache;
 use All\Cache\CacheAbstract;
 use PHPUnit\Framework\TestCase;

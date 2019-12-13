@@ -6,7 +6,7 @@
  * Time: 3:19 PM
  */
 
-namespace TestCache\Drivers;
+namespace Tests\Cache\Drivers;
 
 use All\Cache\Drivers\FileCache;
 use PHPUnit\Framework\TestCase;
