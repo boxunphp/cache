@@ -52,21 +52,20 @@ class CacheAbstractTest extends TestCase
 class CacheConfig extends CacheAbstract
 {
     protected $cacheType = Cache::TYPE_MEMCACHED;
-    protected $cacheConfig = [
+    protected $config = [
         'servers' => [
             ['host' => 'memcached-11211', 'port' => 11211]
         ],
         'connect_timeout' => 1000
     ];
-    protected $cachePrefixKey = 'testc';
-    protected $cacheTTL = 10;
+    protected $prefixKey = 'testc';
+    protected $ttl = 10;
 }
 
 class CacheFile extends CacheAbstract
 {
-    protected $cacheType = Cache::TYPE_MEMCACHED;
-    protected $cacheConfigPath = __DIR__ . '/config';
-    protected $cacheConfigKey = 'memcache';
-    protected $cachePrefixKey = 'testb';
-    protected $cacheTTL = 20;
+    protected $type = Cache::TYPE_MEMCACHED;
+    protected $configKey = 'memcache';
+    protected $prefixKey = 'testb';
+    protected $ttl = 20;
 }

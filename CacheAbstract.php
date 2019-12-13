@@ -13,7 +13,7 @@ use All\Cache\Drivers\ApcuCache;
 use All\Cache\Drivers\FileCache;
 use All\Cache\Drivers\MemcachedCache;
 use All\Cache\Drivers\RedisCache;
-use All\Config\Config;
+use All\Exception\ErrorException;
 
 abstract class CacheAbstract
 {
@@ -28,81 +28,80 @@ abstract class CacheAbstract
      * 缓存类型
      * @var int
      */
-    protected $cacheType = Cache::TYPE_MEMCACHED;
-    /**
-     * 配置文件路径, 配合Config使用
-     * @var string
-     */
-    protected $cacheConfigPath = '';
+    protected $type = Cache::TYPE_MEMCACHED;
     /**
      * 配置文件的key
      * @var string
      */
-    protected $cacheConfigKey = '';
+    protected $configKey = '';
     /**
      * 配置信息,如果有定义了path和key,会被覆盖
      * @var array|null
      */
-    protected $cacheConfig = [];
+    protected $config = [];
     /**
      * 缓存前缀
      * @var string
      */
-    protected $cachePrefixKey = '';
-    protected $cacheTTL = 0;
+    protected $prefixKey = '';
+    protected $ttl = 0;
 
     /**
      * CacheAbstract constructor.
-     * @throws \Exception
+     * @throws ErrorException
      */
     public function __construct()
     {
-        if ($this->cacheConfigPath && $this->cacheConfigKey) {
-            $Config = Config::getInstance()->setPath($this->cacheConfigPath);
-            $this->cacheConfig = $Config->get($this->cacheConfigKey);
+        if ($this->configKey) {
+            // 必须在全局定义环境函数, 用于获取配置
+            if (!function_exists('env')) {
+                throw new ErrorException('function env cannot be defined!', E_ERROR);
+            }
+
+            $this->config = env($this->configKey);
         }
 
-        switch ($this->cacheType) {
+        switch ($this->type) {
             case Cache::TYPE_MEMCACHED:
-                $this->cache = MemcachedCache::getInstance($this->cacheConfig);
+                $this->cache = MemcachedCache::getInstance($this->config);
                 break;
             case Cache::TYPE_REDIS:
-                $this->cache = RedisCache::getInstance($this->cacheConfig);
+                $this->cache = RedisCache::getInstance($this->config);
                 break;
             case Cache::TYPE_APCU:
-                $this->cache = ApcuCache::getInstance($this->cacheConfig);
+                $this->cache = ApcuCache::getInstance($this->config);
                 break;
             case Cache::TYPE_FILE:
-                $this->cache = FileCache::getInstance($this->cacheConfig);
+                $this->cache = FileCache::getInstance($this->config);
                 break;
             default:
-                $this->cache = MemcachedCache::getInstance($this->cacheConfig);
+                $this->cache = MemcachedCache::getInstance($this->config);
                 break;
         }
     }
 
     public function set($key, $value, $expiration = 0)
     {
-        $expiration = $expiration ?: ($this->cacheTTL ?: 0);
-        return $this->cache->set($this->cachePrefixKey . $key, $value, $expiration);
+        $expiration = $expiration ?: ($this->ttl ?: 0);
+        return $this->cache->set($this->prefixKey . $key, $value, $expiration);
     }
 
     public function get($key)
     {
-        return $this->cache->get($this->cachePrefixKey . $key);
+        return $this->cache->get($this->prefixKey . $key);
     }
 
     public function delete($key)
     {
-        return $this->cache->delete($this->cachePrefixKey . $key);
+        return $this->cache->delete($this->prefixKey . $key);
     }
 
     public function setMulti(array $items, $expiration = 0)
     {
-        $expiration = $expiration ?: ($this->cacheTTL ?: 0);
+        $expiration = $expiration ?: ($this->ttl ?: 0);
         $newItems = [];
         foreach ($items as $key => $value) {
-            $newItems[$this->cachePrefixKey . $key] = $value;
+            $newItems[$this->prefixKey . $key] = $value;
         }
         return $this->cache->setMulti($newItems, $expiration);
     }
@@ -111,7 +110,7 @@ abstract class CacheAbstract
     {
         $newKeys = [];
         foreach ($keys as $idx => $key) {
-            $newKeys[$idx] = $this->cachePrefixKey . $key;
+            $newKeys[$idx] = $this->prefixKey . $key;
         }
         $result = $this->cache->getMulti($newKeys);
         $data = [];
@@ -127,7 +126,7 @@ abstract class CacheAbstract
     {
         $newKeys = [];
         foreach ($keys as $key) {
-            $newKeys[] = $this->cachePrefixKey . $key;
+            $newKeys[] = $this->prefixKey . $key;
         }
         return $this->cache->deleteMulti($newKeys);
     }
