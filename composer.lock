@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "boxunphp/php-config",
-            "version": "v1.0.0",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxunphp/php-config.git",
-                "reference": "11f74c60a19c5f285b0ed5a59035ae999631ac7a"
+                "reference": "60d41ec3b69caca65f0340f6fe83d2892240f3a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxunphp/php-config/zipball/11f74c60a19c5f285b0ed5a59035ae999631ac7a",
-                "reference": "11f74c60a19c5f285b0ed5a59035ae999631ac7a",
+                "url": "https://api.github.com/repos/boxunphp/php-config/zipball/60d41ec3b69caca65f0340f6fe83d2892240f3a1",
+                "reference": "60d41ec3b69caca65f0340f6fe83d2892240f3a1",
                 "shasum": ""
             },
             "require": {
@@ -45,21 +45,27 @@
                 }
             ],
             "description": "PHP 配置类",
-            "time": "2019-12-05T10:12:01+00:00"
+            "time": "2019-12-13T12:19:34+00:00"
         },
         {
             "name": "boxunphp/php-exception",
-            "version": "v1.0.2",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxunphp/php-exception.git",
-                "reference": "95c722a1665285b2a5872adff0b0a0f6210dc452"
+                "reference": "dbc0d1cc4a6fedcc4f5d30cab0e3b4a6d997766f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxunphp/php-exception/zipball/95c722a1665285b2a5872adff0b0a0f6210dc452",
-                "reference": "95c722a1665285b2a5872adff0b0a0f6210dc452",
+                "url": "https://api.github.com/repos/boxunphp/php-exception/zipball/dbc0d1cc4a6fedcc4f5d30cab0e3b4a6d997766f",
+                "reference": "dbc0d1cc4a6fedcc4f5d30cab0e3b4a6d997766f",
                 "shasum": ""
+            },
+            "require": {
+                "boxunphp/php-utils": "^v1.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.*"
             },
             "type": "library",
             "autoload": {
@@ -78,20 +84,20 @@
                 }
             ],
             "description": "PHP Exception",
-            "time": "2019-12-05T09:57:21+00:00"
+            "time": "2019-12-13T03:17:35+00:00"
         },
         {
             "name": "boxunphp/php-memcached",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxunphp/php-memcached.git",
-                "reference": "a97bcbc4f98369cbc9f5700a2bb6a44d80485b74"
+                "reference": "36f193d556700fda136d36912ea665fb043f1d29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxunphp/php-memcached/zipball/a97bcbc4f98369cbc9f5700a2bb6a44d80485b74",
-                "reference": "a97bcbc4f98369cbc9f5700a2bb6a44d80485b74",
+                "url": "https://api.github.com/repos/boxunphp/php-memcached/zipball/36f193d556700fda136d36912ea665fb043f1d29",
+                "reference": "36f193d556700fda136d36912ea665fb043f1d29",
                 "shasum": ""
             },
             "require": {
@@ -119,25 +125,26 @@
                 }
             ],
             "description": "PHP Memcached Client",
-            "time": "2019-12-05T09:49:49+00:00"
+            "time": "2019-12-13T05:48:32+00:00"
         },
         {
             "name": "boxunphp/php-redis",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boxunphp/php-redis.git",
-                "reference": "860ae085a66e76e9b35f0c72fd96425c2c226110"
+                "reference": "088b2288902c37331fb543644bd0fd0efcb56181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boxunphp/php-redis/zipball/860ae085a66e76e9b35f0c72fd96425c2c226110",
-                "reference": "860ae085a66e76e9b35f0c72fd96425c2c226110",
+                "url": "https://api.github.com/repos/boxunphp/php-redis/zipball/088b2288902c37331fb543644bd0fd0efcb56181",
+                "reference": "088b2288902c37331fb543644bd0fd0efcb56181",
                 "shasum": ""
             },
             "require": {
                 "boxunphp/php-exception": "^v1.0.0",
-                "boxunsoft/php-instance": "^v1.1.0"
+                "boxunsoft/php-instance": "^v1.1.0",
+                "php": "^7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.*"
@@ -159,7 +166,46 @@
                 }
             ],
             "description": "PHP Redis Client",
-            "time": "2019-12-05T06:16:33+00:00"
+            "time": "2019-12-13T05:51:29+00:00"
+        },
+        {
+            "name": "boxunphp/php-utils",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/boxunphp/php-utils.git",
+                "reference": "c9f4b54c67c5039e6ccf7a9ef5cb72cc9709ed1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/boxunphp/php-utils/zipball/c9f4b54c67c5039e6ccf7a9ef5cb72cc9709ed1a",
+                "reference": "c9f4b54c67c5039e6ccf7a9ef5cb72cc9709ed1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "All\\Utils\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordy",
+                    "email": "arno.zheng@gmail.com"
+                }
+            ],
+            "description": "PHP公共类和方法",
+            "time": "2019-12-11T03:35:36+00:00"
         },
         {
             "name": "boxunsoft/php-instance",
@@ -309,12 +355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/manifest.git",
-                "reference": "6008a32fa23816a6ac71889c80da7d58c056c2bb"
+                "reference": "b54265b8c837ac11b11465a910487574bca3d41f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/manifest/zipball/6008a32fa23816a6ac71889c80da7d58c056c2bb",
-                "reference": "6008a32fa23816a6ac71889c80da7d58c056c2bb",
+                "url": "https://api.github.com/repos/phar-io/manifest/zipball/b54265b8c837ac11b11465a910487574bca3d41f",
+                "reference": "b54265b8c837ac11b11465a910487574bca3d41f",
                 "shasum": ""
             },
             "require": {
@@ -360,7 +406,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2019-10-11T06:20:36+00:00"
+            "time": "2019-12-11T21:24:15+00:00"
         },
         {
             "name": "phar-io/version",
@@ -875,12 +921,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7a46cf1d162bf4046587b8529c37464a987993a0"
+                "reference": "6aab040118d6ae7c7633ed88c6d90a819c949c69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7a46cf1d162bf4046587b8529c37464a987993a0",
-                "reference": "7a46cf1d162bf4046587b8529c37464a987993a0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6aab040118d6ae7c7633ed88c6d90a819c949c69",
+                "reference": "6aab040118d6ae7c7633ed88c6d90a819c949c69",
                 "shasum": ""
             },
             "require": {
@@ -951,7 +997,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-12-06T13:26:00+00:00"
+            "time": "2019-12-10T14:54:07+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
