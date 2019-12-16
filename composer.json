@@ -15,15 +15,15 @@
   },
   "require": {
     "php": "^7.1",
-    "boxunsoft/php-instance": "^v1.1.0",
-    "boxunphp/php-exception": "^v1.0.0",
-    "boxunphp/php-redis": "^v1.0.0",
-    "boxunphp/php-memcached": "^v1.0.0",
-    "boxunphp/php-config": "^v1.0.0"
+    "boxunsoft/php-instance": "v1.*",
+    "boxunphp/php-exception": "v1.*",
+    "boxunphp/php-redis": "v1.*",
+    "boxunphp/php-memcached": "v1.*",
+    "boxunphp/php-config": "v1.*"
   },
   "autoload": {
     "psr-4": {
-      "All\\Cache\\": ""
+      "All\\Cache\\": "src/"
     }
   }
 }
