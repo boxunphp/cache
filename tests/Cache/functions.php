@@ -16,7 +16,7 @@ if (!function_exists('env')) {
     {
         static $config;
         if (!$config) {
-            $config = All\Config\Config::getInstance()->setPath(__DIR__ . '/config');
+            $config = All\Config\Config::getInstance()->setPath(__DIR__ . '/configs');
         }
 
         return $config->get($key);
