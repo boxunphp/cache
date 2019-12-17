@@ -65,7 +65,7 @@ class CacheConfig extends CacheAbstract
 class CacheFile extends CacheAbstract
 {
     protected $type = Cache::TYPE_MEMCACHED;
-    protected $configKey = 'db/default';
+    protected $configKey = 'mc/default';
     protected $prefixKey = 'testb';
     protected $ttl = 20;
 }
